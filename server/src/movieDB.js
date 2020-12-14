@@ -12,8 +12,26 @@ module.exports = (mongoose) => {
   
     const movieModel = mongoose.model('movie', moviesSchema);
     
+    async function getMovies() {
+      try {
+        return await movieModel.find();
+      } catch (error) {
+        console.error("getMovie:", error.message);
+        return {};
+      }
+    }
+
+    async function getMovie(id) {
+      try {
+        return await movieModel.findById(id);
+      } catch (error) {
+        console.error("getMovie:", error.message);
+        return {};
+      }
+    }
   
     return {
-      
+      getMovies,
+      getMovie
     }
   }
