@@ -18,6 +18,11 @@ function App() {
     getData();
   }, []); 
 
+  // function getMovie(id) {
+  //   const question = data.find(element => element._id === id);
+  //   return question;
+  // }
+
   return (
     <>
       <h1>MERN Movie App!</h1>
