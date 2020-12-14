@@ -6,8 +6,7 @@ import Movie from "./movie";
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
-  const [data, setData] = useState("No data :(");
-  
+  const [data, setData] = useState([]);
   useEffect(() => {
     async function getData() {
       const url = `${API_URL}/movies`;
@@ -53,10 +52,10 @@ function App() {
   return (
     <>
       <h1>MERN Movie App!</h1>
-      <p> {data}</p>
+      <p> here is some movies</p>
       
     <Router>
-     <Movies path="/" movieData={data} addMovie={addMovie}></Movies>
+     <Movies path="/"  movieData={data} addMovie={addMovie}></Movies>
      <Movie path="/movie:id" getMovie={getMovie}></Movie>
      </Router>
     
