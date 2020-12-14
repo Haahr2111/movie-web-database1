@@ -14,11 +14,13 @@ function Movies(props){
     );
 
   }
-const list = movieData.map(mapFunction);
+
 
   if (!props.movies) {
     return <p>No data!</p>;
   }
+  
+  const list = movieData.map(mapFunction);
 
   return(
      <>
