@@ -19,8 +19,9 @@ const movieData = props.movieData;
     return(
         <>
         <h3>Movies</h3>
+        Her tilføjes film
       <ul>
-          Her tilføjes film
+          
           
        
       </ul>
