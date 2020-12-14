@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import {Router} from "@reach/router";
+
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
@@ -6,7 +8,7 @@ function App() {
   
   useEffect(() => {
     async function getData() {
-      const url = `${API_URL}/hello`;
+      const url = `${API_URL}/movies`;
       const response = await fetch(url);
       const data = await response.json();
       setData(data.msg);

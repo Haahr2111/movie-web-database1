@@ -6,12 +6,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 /**** Configuration ****/
 const app = express(); 
 
-function createServer() {
-  const routes = require("./routes")();
+const MONGO_URL = process.env.MONGO_URL||'mongodb://localhost/Movies'; 
+
+
+async function createServer() {
+  // Connect db
+  await mongoose.connect(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+
+  // Create data
+  const movieDB = require('./movieDB')(mongoose);
+
+  const routes = require("./routes")(movieDB); // Inject mongoose into routes module
 
   app.use(bodyParser.json()); 
   app.use(bodyParser.urlencoded({ extended: false }));
