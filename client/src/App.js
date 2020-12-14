@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Router} from "@reach/router";
+import Movies from "./movies";
+import Movie from "./movie";
 
 const API_URL = process.env.REACT_APP_API;
 
@@ -20,6 +22,11 @@ function App() {
     <>
       <h1>MERN Movie App!</h1>
       <p>Data from server: {data}</p>
+      
+    <Router>
+     <Movies path="/"></Movies>
+     </Router>
+    
     </>
   );
 }
