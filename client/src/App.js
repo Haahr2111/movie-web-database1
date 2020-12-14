@@ -19,8 +19,8 @@ function App() {
   }, []); 
 
   // function getMovie(id) {
-  //   const question = data.find(element => element._id === id);
-  //   return question;
+  //   const movie = data.find(element => element._id === id);
+  //   return movie;
   // }
 
   return (
