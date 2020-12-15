@@ -10,7 +10,8 @@ function Movie(props) {
 
     if (movie===undefined) return null 
 
-    const reviewList= movie.reviews.map(e=> {return (
+    const reviewList= movie.reviews.map(e=> 
+        {return (
         <>
         <li key={e._id}><p>{e.answer}</p>
         <p>Rating: {e.score}</p>
