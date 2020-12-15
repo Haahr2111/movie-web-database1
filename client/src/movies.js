@@ -10,7 +10,7 @@ const movieData = props.movieData;
     const mapFunction = element => {
         return(
     <Link to={`/movie/${element._id}`} key={element._id}>
-      <li>{element.name}</li>
+      <li>{element.title}</li>
     </Link>
     )
   

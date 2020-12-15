@@ -21,7 +21,7 @@ module.exports = (DB) => {
     const genre = req.body.genre;
     const release = req.body.release;
     DB.createMovie(title, description, genre, release)
-    res.json({msg: name + ' has been added'});
+    res.json({msg: title + ' has been added'});
   });
 
   router.post('/reviews', async (req, res) => {

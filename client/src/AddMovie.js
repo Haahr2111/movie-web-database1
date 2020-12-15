@@ -20,7 +20,7 @@ function AddMovie(props) {
                 <input onChange={event => setGenre(event.target.value)} type="text" id="form_genre" name="form_genre"/>
                 <label htmlFor="form_release"> set release date</label>
                 <input onChange={event => setRelease(event.target.value)} type="text" id="form_released" name="form_released"/>
-				<button type="button" onClick={(event) => props.AddMovie(title, description, genre, release)}>
+				<button type="button" onClick={(event) => props.addMovie(title, description, genre, release)}>
 					Submit
 				</button>
 			</form>

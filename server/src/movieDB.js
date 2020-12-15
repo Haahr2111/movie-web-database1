@@ -4,7 +4,7 @@ module.exports = (mongoose) => {
     title: String,
     description: String,
     genre: String,
-    release: Number,
+    release: String,
     reviews: [{
       answer: String,
       score: Number

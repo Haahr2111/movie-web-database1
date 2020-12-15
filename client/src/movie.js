@@ -23,9 +23,9 @@ function Movie(props) {
 
     return (
 <>
-<h3>{movie.name}</h3>
-      <p>{movie.content}</p>
-    <p><b>Answers</b></p>
+<h3>{movie.title}</h3>
+      <p>{movie.description}</p>
+    <p><b>reviews</b></p>
     <ul>{reviewList}</ul>
      <AddReview id={id} addreview={props.addreview}></AddReview>
       <Link to="/">Back</Link>
