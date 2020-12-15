@@ -61,7 +61,6 @@ function App() {
       id:id,
       answer: answer,
       score: score
-
     }  
     
     //define post url 
