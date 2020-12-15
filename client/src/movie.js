@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, useParams} from "@reach/router";
-import AddReview from "./AddReview.js";
+import AddReview from "./AddReview";
 
 function Movie(props) {
 

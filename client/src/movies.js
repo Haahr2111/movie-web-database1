@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "@reach/router";
 
-import AddMovie from "./AddMovie.js";
+import AddMovie from "./AddMovie";
 
 function Movies(props){
   
