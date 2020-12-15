@@ -24,10 +24,14 @@ function Movie(props) {
     return (
 <>
 <h3>{movie.title}</h3>
-      <p>{movie.description}</p>
-    <p><b>reviews</b></p>
-    <ul>{reviewList}</ul>
+    <p><b>Release:</b> {movie.release}</p>
+<p><b>Genre: </b>{movie.genre}</p>
+      <p><b>Description </b><br></br>{movie.description}</p>
+    
      <AddReview id={id} addreview={props.addreview}></AddReview>
+
+     <p><b>Reviews</b></p>
+     <ul>{reviewList}</ul>
       <Link to="/">Back</Link>
 </>
     )

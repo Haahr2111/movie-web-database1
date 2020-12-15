@@ -8,6 +8,7 @@ function Movies(props){
 const movieData = props.movieData;
 
     const mapFunction = element => {
+     
         return(
     <Link to={`/movie/${element._id}`} key={element._id}>
       <li>{element.title}</li>
@@ -15,6 +16,7 @@ const movieData = props.movieData;
     )
   
 }
+
   const list = movieData.map(mapFunction);
   
 

@@ -9,9 +9,9 @@ function AddReview(props) {
 
 	return (
 		<>
-		<h3>Add an answer</h3>
+		<h3>Add an review</h3>
 			<form>
-				<label htmlFor="form_answer">Comment</label>
+				<label htmlFor="form_answer">Write review</label>
 				<input onChange={event => setAnswer(event.target.value)} type="text" id="form_answer" name="form_answer"/>
 				<button type="button" onClick={(event) => props.addReview(props.id, answer)}>
 					Submit
