@@ -1,16 +1,16 @@
 module.exports = (mongoose) => {
 
   const movieSchema = new mongoose.Schema({
-    name: String,
+    title: String,
     description: String,
+    genre: String,
+    release: Number,
     reviews: [{
-      text: String,
-      rating: Number
+      answer: String,
+      score: Number
     }]
   });
-
-  const movieModel = mongoose.model('movie', movieSchema);   
-  
+  const movieModel = mongoose.model('movie', movieSchema);
   async function getMovies() {
     try {
       return await movieModel.find();
@@ -28,36 +28,32 @@ module.exports = (mongoose) => {
       return {};
     }
   }
-  
-  //generate test data
+  async function createMovie(title, description, genre, release) {
+    let movie = new movieModel({
+      title: title,
+      description: description,
+      genre:genre,
+      release: release
+    });
+    return movie.save();
+  }
+  async function createReview(answer, id) {
 
-    async function bootstrap(count = 5) {
-      
-      let l = (await getMovies()).length;
-      console.log("Movie collection size:", l);
-  
-      if (l === 0) {
-        let promises = [];
-        for (let i = 0; i < count; i++) {
-          let newMovie = new movieModel(
-            {
-            name: `Movie number ${i}`,
-            content: `Movie description for ${i}`,
-            genre: `Movie genre for ${i}`,
-            released: `Movie release for ${i}`,
-          }
-            );
-          promises.push(newMovie.save());
-        }
-        return Promise.all(promises);
-      }
-      
-    }
-      
-   return {
+    let NewReview = {
+      answer: answer,
+      score: 0
+    };
+    return await movieModel.findOneAndUpdate(
+      { _id: id },
+      { $push: { reviews: NewReview } }
+    );
+  }
+
+  return {
     getMovies,
     getMovie,
-    bootstrap
+    createMovie,
+    createReview,
   }
-  
+
 }

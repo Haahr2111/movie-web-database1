@@ -1,34 +1,37 @@
-module.exports = (movieDB) => {
+module.exports = (DB) => {
   const express = require("express");
   const router = express.Router();
 
   /**** Routes ****/
-   
-   router.get('/', async (req, res) => {
-    const movies = await movieDB.getMovies(); 
+    /**** Routes ****/
+  router.get('/movies', async (req, res) => {
+    const movies = await DB.getMovies(); 
     res.json(movies);
   });
 
-  router.get('/:id', async (req, res) => {
-    const movie = await movieDB.getMovie(req.params.id);
+  router.get('/movies/:id', async (req, res) => {
+    const movie = await DB.getMovie(req.params.id);
     res.json(movie);
   });
 
   router.post('/movies', async (req, res) => {
     // TODO: Implement!
-    const name = req.body.name;
-    const content = req.body.content;
+    const title = req.body.title;
+    const description = req.body.description;
     const genre = req.body.genre;
-    const released = req.body.released;
-
-    movieDB.createQuestion(name, content, genre, released)
+    const release = req.body.release;
+    DB.createMovie(title, description, genre, release)
     res.json({msg: name + ' has been added'});
   });
 
-  router.post('/', async (req, res) => {
+  router.post('/reviews', async (req, res) => {
     // TODO: Implement!
-    res.json({msg: "Not implemented :("});
+    const answer = req.body.answer;
+    const id = req.body.id;
+    await DB.createReview(answer, id)
+    res.json({msg: answer + ' has been added'});
   });
+  
 
   return router;
 }

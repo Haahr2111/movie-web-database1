@@ -1,39 +1,36 @@
 import React from 'react';
 import {Link} from "@reach/router";
 
+import AddMovie from "./AddMovie.js";
 
 function Movies(props){
-
-  const movieData = props.movieData;
-
-  const mapFunction = element => {
-    return (
-      <Link to={`/movie/${element._id}`} key={element._id}>
-        <li>{element.name}</li>
-      </Link>
-    );
-
-  }
-
-
-  if (!props.movies) {
-    return <p>No data!</p>;
-  }
   
-  const list = movieData.map(mapFunction);
+const movieData = props.movieData;
 
-  return(
-     <>
+    const mapFunction = element => {
+        return(
+    <Link to={`/movie/${element._id}`} key={element._id}>
+      <li>{element.name}</li>
+    </Link>
+    )
+  
+}
+  const list = movieData.map(mapFunction);
+  
+
+  
+    return(
+        <>
         <h3>Movies</h3>
       <ul>
         {list}
       </ul>
-        
+        <AddMovie addMovie={props.addMovie}></AddMovie>
         
         </>
-    );
-      
+    )
 }
 
-
 export default Movies;
+
+

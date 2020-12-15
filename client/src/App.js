@@ -7,6 +7,7 @@ const API_URL = process.env.REACT_APP_API;
 
 function App() {
   const [data, setData] = useState([]);
+  const [postCount, setPostCount]=useState(0);
   useEffect(() => {
     async function getData() {
       const url = `${API_URL}/movies`;
@@ -15,50 +16,69 @@ function App() {
       setData(data);
     }
     getData();
-  }, []); 
+  }, [postCount]); 
 
   function getMovie(id) {
     const movie = data.find(element => element._id === id);
     return movie;
   }
-  async function addMovie(name, content, genre, released){
-    console.log(name, content);
+  async function addMovie(title, description, genre, release){
+    console.log(title, description, genre, release);
+    setPostCount(postCount +1);
     //create object
     const newMovie = {
-      name: name,
-      content: content,
-      genre: genre,
-      released: released
+      title: title,
+      description: description,
+      genre:genre,
+      release: release
     }  
+
+    //define post url 
+    const url = `${API_URL}/movies`;
+    //use fetch
+    const response = await fetch(url, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newMovie),
+    });
+    const data = await response.json();
+    console.log(data);
   
-  //define post url 
-  const url = `${API_URL}/movies`;
-  //use fetch
-  const response = await fetch(url, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newMovie),
-  });
-  const data = await response.json();
-  console.log(data);
-}
+  }
+   async function addReview(id, answer){
+    console.log(answer);
+    //create object
+    const newReview = {
+      id:id,
+      answer: answer,
+
+    }  
+    
+    //define post url 
+    const url = `${API_URL}/reviews`;
+    //use fetch
+    const response = await fetch(url, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newReview),
+    });
+    const data = await response.json();
+    console.log(data);
+  }
 
   
-
-  
-  
+ 
   return (
     <>
-      <h1>MERN Movie App!</h1>
-      <p> here is some movies</p>
-      
     <Router>
-     <Movies path="/"  movieData={data} addMovie={addMovie}></Movies>
-     <Movie path="/movie:id" getMovie={getMovie}></Movie>
+     
+     <Movies path="/" movieData={data} addMovie={addMovie}></Movies>
+     <Movie path="/movie/:id" getMovie={getMovie} addReview={addReview}></Movie>
      </Router>
-    
     </>
   );
 }
