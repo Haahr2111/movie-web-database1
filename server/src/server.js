@@ -20,7 +20,8 @@ async function createServer() {
 
   // Create data
   const movieDB = require('./movieDB')(mongoose);
-
+  await movieDB.bootstrap();
+  
   const routes = require("./routes")(movieDB); // Inject mongoose into routes module
 
   app.use(bodyParser.json()); 

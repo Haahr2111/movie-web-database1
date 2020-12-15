@@ -8,12 +8,18 @@ const API_URL = process.env.REACT_APP_API;
 function App() {
   const [data, setData] = useState([]);
   const [postCount, setPostCount]=useState(0);
+
+  function compare(a, b) {
+    if (a.title > b.title) return 1;
+    else return -1;
+  }
+
   useEffect(() => {
     async function getData() {
       const url = `${API_URL}/Movies`;
       const response = await fetch(url);
       const data = await response.json();
-      setData(data);
+      setData(data.sort(compare));
     }
     getData();
   }, [postCount]); 
@@ -47,12 +53,14 @@ function App() {
     console.log(data);
   
   }
-   async function addReview(id, answer){
+   async function addReview(id, answer, score){
+    setPostCount(postCount +1);
     console.log(answer);
     //create object
     const newReview = {
       id:id,
       answer: answer,
+      score: score
 
     }  
     

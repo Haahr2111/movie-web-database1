@@ -13,7 +13,7 @@ function Movie(props) {
     const reviewList= movie.reviews.map(e=> {return (
         <>
         <li key={e._id}><p>{e.answer}</p>
-        <p>Score: {e.score}</p>
+        <p>Rating: {e.score}</p>
         </li>
         </>
         )
@@ -24,11 +24,12 @@ function Movie(props) {
     return (
 <>
 <h3>{movie.title}</h3>
+    
     <p><b>Release:</b> {movie.release}</p>
 <p><b>Genre: </b>{movie.genre}</p>
       <p><b>Description </b><br></br>{movie.description}</p>
     
-     <AddReview id={id} addreview={props.addreview}></AddReview>
+     <AddReview id={id} addReview={props.addReview}></AddReview>
 
      <p><b>Reviews</b></p>
      <ul>{reviewList}</ul>

@@ -27,8 +27,9 @@ module.exports = (DB) => {
   router.post('/reviews', async (req, res) => {
     // TODO: Implement!
     const answer = req.body.answer;
+    const score = req.body.score;
     const id = req.body.id;
-    await DB.createReview(answer, id)
+    await DB.createReview(answer,score, id)
     res.json({msg: answer + ' has been added'});
   });
   
