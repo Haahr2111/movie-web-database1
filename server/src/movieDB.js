@@ -7,7 +7,7 @@ module.exports = (mongoose) => {
     release: String,
     reviews: [{
       answer: String,
-      score: Number
+      score: String
     }]
   });
   const movieModel = mongoose.model('movie', movieSchema);
