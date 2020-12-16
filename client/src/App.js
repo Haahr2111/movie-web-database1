@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Router} from "@reach/router";
 import Movies from "./movies";
 import Movie from "./movie";
+import AuthService from "./AuthService";
+// import Login from "./Login";
 
 const API_URL = process.env.REACT_APP_API;
+const authService = new AuthService(`${API_URL}/users/authenticate`);
 
 function App() {
   const [data, setData] = useState([]);
@@ -53,6 +56,8 @@ function App() {
     console.log(data);
   
   }
+
+  
    async function addReview(id, answer, score){
     setPostCount(postCount +1);
     console.log(answer);
@@ -62,7 +67,6 @@ function App() {
       answer: answer,
       score: score
     }  
-    
     //define post url 
     const url = `${API_URL}/reviews`;
     //use fetch
@@ -77,12 +81,25 @@ function App() {
     console.log(data);
   }
 
+  async function login(username, password) {
+    try {
+      const resp = await authService.login(username, password);
+      console.log("Authentication:", resp.msg);
+    } catch (e) {
+      console.log("Login", e);
+    }
+  }
   
- 
+//  let loginContent = <p>Is logged in</p>
+//   if (!authService.loggedIn()) {
+//     loginContent = <Login login={login} />;
+//   } 
+
   return (
     <>
+    <h1>Movie database app</h1>
+{/* {loginContent} */}
     <Router>
-     
      <Movies path="/" movieData={data} addMovie={addMovie}></Movies>
      <Movie path="/movie/:id" getMovie={getMovie} addReview={addReview}></Movie>
      </Router>

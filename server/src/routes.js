@@ -4,17 +4,17 @@ module.exports = (DB) => {
 
   /**** Routes ****/
     /**** Routes ****/
-  router.get('/movies', async (req, res) => {
+  router.get('/', async (req, res) => {
     const movies = await DB.getMovies(); 
     res.json(movies);
   });
 
-  router.get('/movies/:id', async (req, res) => {
+  router.get('/:id', async (req, res) => {
     const movie = await DB.getMovie(req.params.id);
     res.json(movie);
   });
 
-  router.post('/movies', async (req, res) => {
+  router.post('/', async (req, res) => {
     // TODO: Implement!
     const title = req.body.title;
     const description = req.body.description;
