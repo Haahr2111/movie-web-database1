@@ -8,10 +8,8 @@ function Movie(props) {
     const id = params.id;
     const movie = props.getMovie(id);
 
-
     if (movie===undefined) return null 
 
-    
     const reviewList= movie.reviews.map(e=> 
         {return (
         <>
