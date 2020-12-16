@@ -29,10 +29,10 @@ class AuthService {
     // TODO: Check if token is expired using 'jwt-decode'
     // TODO: Install using 'npm install jwt-decode'
     
-    if (jwtDecode(token).exp < Date.now() / 1000) {
-        // Do something to renew token
+    // if (jwtDecode(token).exp < Date.now() / 1000) {
+    //     // Do something to renew token
        
-    }
+    // }
      
     return (this.getToken() !== null);
   }

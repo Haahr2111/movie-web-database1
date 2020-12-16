@@ -15,7 +15,7 @@ function AddReview(props) {
 			<form>
 				<label htmlFor="form_answer">Write review</label>
 				<input onChange={event => setAnswer(event.target.value)} type="text" id="form_answer" name="form_answer"/>
-                <label for="form_score">Rate:</label>
+                <label htmlfor="form_score">Rate:</label>
 <select onChange={event => setScore(event.target.value)} id="form_score" name="form_score">
   <option value="1">1</option>
   <option value="2">2</option>
