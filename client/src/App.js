@@ -3,7 +3,7 @@ import {Router} from "@reach/router";
 import Movies from "./movies";
 import Movie from "./movie";
 import AuthService from "./AuthService";
-// import Login from "./Login";
+import Login from "./Login";
 
 const API_URL = process.env.REACT_APP_API;
 const authService = new AuthService(`${API_URL}/users/authenticate`);
@@ -82,6 +82,7 @@ function App() {
   }
 
   async function login(username, password) {
+    setPostCount(postCount +1);
     try {
       const resp = await authService.login(username, password);
       console.log("Authentication:", resp.msg);
@@ -90,15 +91,15 @@ function App() {
     }
   }
   
-//  let loginContent = <p>Is logged in</p>
-//   if (!authService.loggedIn()) {
-//     loginContent = <Login login={login} />;
-//   } 
+ let loginContent = <p>Is logged in</p>
+  if (!authService.loggedIn()) {
+    loginContent = <Login login={login} />;
+  } 
 
   return (
     <>
     <h1>Movie database app</h1>
-{/* {loginContent} */}
+{loginContent}
     <Router>
      <Movies path="/" movieData={data} addMovie={addMovie}></Movies>
      <Movie path="/movie/:id" getMovie={getMovie} addReview={addReview}></Movie>

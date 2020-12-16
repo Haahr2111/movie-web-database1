@@ -30,7 +30,7 @@ const openPaths = [
   // Open everything that doesn't begin with "/api"
   /^(?!\/api).*/gim,
 
-  // Open all GET requests on the form "/api/questions/*" using a regular expression
+  // Open all GET requests on the form "/api/movies/*" using a regular expression
   { url: /\/api\/movies\.*/gim, methods: ["GET"] }
 ];
 
