@@ -54,7 +54,7 @@ module.exports = secret => {
     if (user) { // If the user is found
       if (bcrypt.compareSync(password, user.hash)) {
         const payload = { username: username };
-        const token = jwt.sign(payload, secret, { algorithm: 'HS512', expiresIn: '1h' });
+        const token = jwt.sign(payload, secret, { algorithm: 'HS512', expiresIn: '5m' });
 
         res.json({
           msg: `User '${username}' authenticated successfully`,
