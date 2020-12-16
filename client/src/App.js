@@ -94,6 +94,7 @@ function App() {
   }
   
  let loginContent = <p>Is logged in</p>
+ 
   if (!authService.loggedIn()) {
     loginContent = <Login login={login} />;
   } 

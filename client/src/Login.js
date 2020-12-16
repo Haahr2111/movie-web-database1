@@ -17,6 +17,7 @@ function Login(props) {
       <input onChange={(event) => setPassword(event.target.value)}
         name="password" type="password" placeholder="password"></input><br />
       <button onClick={handleLogin}>Login</button>
+      
     </>
   );
 }
