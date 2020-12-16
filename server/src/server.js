@@ -59,6 +59,7 @@ async function createServer() {
   
   const routes = require("./routes")(movieDB); // Inject mongoose into routes module
 const userRouter = require("./userRouter")(secret)
+
   app.use(bodyParser.json()); 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(morgan('combined')); 

@@ -44,6 +44,7 @@ function App() {
 
     //define post url 
     const url = `${API_URL}/movies`;
+    
     //use fetch
     const response = await fetch(url, {
       method: 'POST', // or 'PUT'
@@ -69,6 +70,7 @@ function App() {
     }  
     //define post url 
     const url = `${API_URL}/reviews`;
+   
     //use fetch
     const response = await fetch(url, {
       method: 'POST', // or 'PUT'
@@ -102,7 +104,7 @@ function App() {
 {loginContent}
     <Router>
      <Movies path="/" movieData={data} addMovie={addMovie}></Movies>
-     <Movie path="/movie/:id" getMovie={getMovie} addReview={addReview}></Movie>
+     <Movie path="/movie/:id" getMovie={getMovie} addReview={addReview} username={authService.getUsername()}></Movie>
      </Router>
     </>
   );
