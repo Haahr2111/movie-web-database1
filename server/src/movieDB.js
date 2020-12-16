@@ -52,13 +52,23 @@ module.exports = (mongoose) => {
     let l = (await getMovies()).length;
     console.log("Movie collection size:", l);
 
-    // function getRandomInt(min, max) {
-    //   return Math.floor(Math.random() * (max - min + 1) + min);
-    // }
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
  const getTitle =['Star Wars', 'TinTin', 'Bjergkøbing Grandpix', 'Indiana Jones', 'Django', 'Lord of the rings']
-    
+    const testReviews =['Great Adventure', 'Very nice',
+      'Tintin always makes me hi hi', 'thats cool',
+      'Funny ride', 'could be better',
+      'That rip never gets old', 'The old ones are way better',
+      'Too much blood', 'not enough blood',
+      'The guy that plays frodo looks like a girl', 'Great movie'
+    ]
 
+function testRate() { 
+  return ['','1','2','3','4','5','6','7','8','9','10'][getRandomInt(1, 10)];
+  
+  }
     if (l === 0) {
       let promises = [];
       for (let i = 0; i < count; i++) {
@@ -68,9 +78,14 @@ module.exports = (mongoose) => {
         title: getTitle[i],
         description:`Movie desc number ${i}`,
         genre:`Movie genre number ${i}`,
-        release: `Movie release number ${i}`
+        release: `Movie release number ${i}`,
+        reviews: [{
+          answer: testReviews[i],
+          score: testRate() 
+        }]
       }
-         );
+         )
+         
 
         promises.push(newMovie.save());
       }
