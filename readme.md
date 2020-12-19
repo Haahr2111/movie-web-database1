@@ -1,4 +1,7 @@
-# MERN template project
+# THIS IS THE WRONG Repository 
+Go to : 
+https://github.com/Haahr2111/final-movie-web-database
+
 
 ## Introduction
 This project is a template for building fullstack JavaScript applications running on node.js. The technology stack is as follows:
